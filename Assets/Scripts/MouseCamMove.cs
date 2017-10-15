@@ -11,21 +11,30 @@ using UnityEngine;
 public class MouseCamMove : MonoBehaviour
 {
     public float speed;
-    // Use this for initialization
-    void Start()
-    {
+    
 
-    }
-
-    // Update is called once per frame
+    // 
     void Update()
     {
-        if (Input.GetAxis("Mouse X") != 0.0f)
-        {
-            transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed, 0.0f,
-                Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed);
-        }
+        MoveCam();
+    }
+     
 
+    /// <summary>
+    /// If mouse key 2 is pressed
+    /// and mouse is moved,
+    /// cam moves in same direction
+    /// </summary>
+    private void MoveCam()
+    {
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            if (Input.GetAxis("Mouse X") != 0.0f)
+            {
+                transform.position += new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * speed, 0.0f,
+                    Input.GetAxisRaw("Mouse Y") * Time.deltaTime * speed);
+            }
+        }
     }
 
 }
